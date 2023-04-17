@@ -39,6 +39,12 @@ class wordpress {
     require => Exec['extract'],
   }
   
+  exec { 'permisos-uploads':
+    command => "chmod -R 755 /var/www/html/wp-content/uploads",
+    require => Exec['/tmp/wordpress/wp-content/uploads'],
+    path => ['/bin'],
+  } 
+
   # Copy to /var/www/html
   exec { 'copy':
     command => "cp -r /tmp/wordpress/* /var/www/html",

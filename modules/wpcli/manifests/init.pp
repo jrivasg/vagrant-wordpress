@@ -20,13 +20,13 @@ class wpcli {
     path => ['/bin'],
   } 
  
-  /* exec { 'Basic config':
-    command => "wp core install --url=localhost:80 --locale=es_ES --title='El blog de Ilich Morales UNIR' --admin_name=${wp_admin} --admin_password=${wp_password} --admin_email=jrivasgonzalez@gmail.com --allow-root --path='${server_root}'",
+  exec { 'Basic config':
+    command => "wp core install --url=localhost:80 --locale=es_ES --title='Automatización de Wordpress con Vagrant-Puppet' --admin_name=${wp_admin} --admin_password=${root_password} --admin_email=jrivasgonzalez@gmail.com",
     require => Exec['permisos-ejecucion'],
     path => ['/usr/local/bin'],
     notify => Service['apache2']
   }
-
+/* 
   exec { 'Install theme':
     command => "wp theme install twentyseventeen  --allow-root --path='${server_root}' --activate",
     path => ['/usr/local/bin'],
